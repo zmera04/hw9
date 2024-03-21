@@ -97,7 +97,7 @@ class PostController
             exit();
         }
 
-        //TODO 5-d: update a post
+        //TODO 5-d: delete a post
 
         http_response_code(200);
         echo json_encode([
