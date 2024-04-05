@@ -43,11 +43,14 @@ class PostController
     public function getPosts($id) {
         header("Content-Type: application/json");
         if ($id) {
-            //TODO 5-c i: get a post data by id
+            $postModel = new Post();
+            $post = $postModel->getPostByID($id);
+            echo json_encode($post);
+            exit();
         } else {
-            //TODO 5-a: get all posts
-        }
-
+            $postModel = new Post();
+            $posts = $postModel->getAllPosts();
+            echo json_encode($posts);        }
         exit();
     }
 
@@ -58,12 +61,23 @@ class PostController
         ];
         $postData = $this->validatePost($inputData);
 
-        //TODO 5-b: save a post
-
-        http_response_code(200);
-        echo json_encode([
-            'success' => true
-        ]);
+        $postModel = new Post();
+        $postStatus = $postModel->savePost($postData);
+        
+        if($postStatus)
+        {
+            http_response_code(200);
+            echo json_encode([
+                'success' => true
+            ]);
+        }
+        else
+        {
+            http_response_code(400);
+            echo json_encode([
+                'success' => false
+            ]);
+        }
         exit();
     }
 
@@ -82,12 +96,23 @@ class PostController
         ];
         $postData = $this->validatePost($inputData);
 
-        //TODO 5-c: update a post
+        $postModel = new Post();
+        $postStatus = $postModel->updatePost($postData, $id);
 
-        http_response_code(200);
-        echo json_encode([
-            'success' => true
-        ]);
+        if($postStatus)
+        {
+            http_response_code(200);
+            echo json_encode([
+                'success' => true
+            ]);
+        }
+        else
+        {
+            http_response_code(400);
+            echo json_encode([
+                'success' => false
+            ]);
+        }
         exit();
     }
 
@@ -97,12 +122,23 @@ class PostController
             exit();
         }
 
-        //TODO 5-d: delete a post
+        $postModel = new Post();
+        $postStatus = $postModel->deletePost($id);
 
-        http_response_code(200);
-        echo json_encode([
-            'success' => true
-        ]);
+        if($postStatus)
+        {
+            http_response_code(200);
+            echo json_encode([
+                'success' => true
+            ]);
+        }
+        else
+        {
+            http_response_code(400);
+            echo json_encode([
+                'success' => false
+            ]);
+        }
         exit();
     }
 

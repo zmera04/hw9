@@ -1,0 +1,13 @@
+1. What is SQL? What are relational databases?
+    SQL is a language for database creation and manipulation. SQL is used to create dynamic websites-- storing data from which
+    content is pulled from. Relational databases are essentially tables-- similar to an excel spreadsheet. Columns store a
+    characteristic of items in a table, and rows group data in several columns representing an item.
+
+4. What is a PDO in PHP? Why do we need to use prepared statements?
+    PDO, or PHP Data Objects, allow for consistent ways to access databases. PDOs also ensure that accessing a database is 
+    safe, through prepared statements. Prepared statements protect databases from SQL injections, even if an input is not
+    escaped properly. In the preparation step, a SQl statement template is created and sent to the database, with certain values
+    (called parameters) left unspecified. The database parses, compiles, and performs query optimization on the statement, 
+    storing the result without executing the statement. In the execution step, the parameter's values are set, and the database
+    executes the statement-- the statement can be executed several times, with different values in the parameters. Due to
+    prepared statement's independence from external inputs, SQL injections cannot occur.
