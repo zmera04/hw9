@@ -12,7 +12,7 @@ trait Database
     {
         $type = 'mysql';
         $server = 'localhost';
-        $db = 'posts';
+        $db = 'hw9';
         $port = '8888';
         $charset = 'utf8mb4';
 

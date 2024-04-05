@@ -11,7 +11,7 @@ class Post
 
     public function getPostByID($id)
     {
-        $query = 'select * from posts where :id';
+        $query = 'select * from posts where id = :id';
         return $this->queryWithParams($query, ['id' => $id]);
     }
 
@@ -23,19 +23,19 @@ class Post
 
     public function savePost($data)
     {
-        $query = 'insert in posts(title, description) values(:title, :description)';
-        return $this->queryWithParams($query, ['title' => $data.title,'description' => $data.description]);
+        $query = 'insert into posts(title, description) values(:title, :description)';
+        return $this->queryWithParams($query, ['title' => $data['title'],'description' => $data['description']]);
     }
 
     public function updatePost($data, $id)
     {
-        $query = 'update posts set title :title, description :description where :id';
-        return $this->queryWithParams($query, ['title' => $data.title, 'description' => $data.description, 'id' => $id]);
+        $query = 'update posts set title = :title, description = :description where id = :id';
+        return $this->queryWithParams($query, ['title' => $data['title'],'description' => $data['description'],'id' => $id]);
     }
 
     public function deletePost($id)
     {
-        $query = 'delete * from posts where :id';
+        $query = 'delete from posts where id = :id';
         return $this->queryWithParams($query, ['id' => $id]);
     }
 }

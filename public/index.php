@@ -1,4 +1,5 @@
 <?php
+require_once "../app/core/Database.php";
 require_once "../app/models/Post.php";
 require_once "../app/controllers/PostController.php";
 

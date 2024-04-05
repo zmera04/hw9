@@ -64,20 +64,10 @@ class PostController
         $postModel = new Post();
         $postStatus = $postModel->savePost($postData);
         
-        if($postStatus)
-        {
-            http_response_code(200);
-            echo json_encode([
-                'success' => true
-            ]);
-        }
-        else
-        {
-            http_response_code(400);
-            echo json_encode([
-                'success' => false
-            ]);
-        }
+        http_response_code(200);
+        echo json_encode([
+            'success' => true
+        ]);
         exit();
     }
 
@@ -99,20 +89,10 @@ class PostController
         $postModel = new Post();
         $postStatus = $postModel->updatePost($postData, $id);
 
-        if($postStatus)
-        {
-            http_response_code(200);
-            echo json_encode([
-                'success' => true
-            ]);
-        }
-        else
-        {
-            http_response_code(400);
-            echo json_encode([
-                'success' => false
-            ]);
-        }
+        http_response_code(200);
+        echo json_encode([
+            'success' => true
+        ]);
         exit();
     }
 
@@ -125,20 +105,10 @@ class PostController
         $postModel = new Post();
         $postStatus = $postModel->deletePost($id);
 
-        if($postStatus)
-        {
-            http_response_code(200);
-            echo json_encode([
-                'success' => true
-            ]);
-        }
-        else
-        {
-            http_response_code(400);
-            echo json_encode([
-                'success' => false
-            ]);
-        }
+        http_response_code(200);
+        echo json_encode([
+            'success' => true
+        ]);
         exit();
     }
 
