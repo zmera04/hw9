@@ -16,9 +16,6 @@ trait Database
         $port = '8888';
         $charset = 'utf8mb4';
 
-        $username = 'admin';
-        $password = 'password';
-
         $options = [
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
@@ -30,7 +27,7 @@ trait Database
         $dsn = "$type:host=$server;dbname=$db;port=$port;charset=$charset";
 
         try {
-            return new PDO($dsn, $username, $password, $options);
+            return new PDO($dsn, DBUSER, DBPASS, $options);
         } catch (PDOException $e) {
             throw new PDOException($e->getMessage(), $e->getCode());
         }
